@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Image not imported yet">
+  <rect width="640" height="360" fill="#F1EFE8"/>
+  <rect x="0" y="320" width="640" height="40" fill="#D9A520"/>
+  <text x="40" y="170" fill="#0F2A4A" font-family="Georgia, serif" font-size="28">Photograph to be imported</text>
+  <text x="40" y="210" fill="#475569" font-family="Georgia, serif" font-size="16">Run Legacy Import while the previous site is still online.</text>
+</svg>

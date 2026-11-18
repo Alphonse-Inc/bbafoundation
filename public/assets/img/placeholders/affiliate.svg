@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" role="img" aria-label="Affiliate logo to be labelled">
+  <rect width="240" height="64" rx="8" fill="#fff" stroke="#E6E1D6"/>
+  <rect x="12" y="16" width="32" height="32" rx="6" fill="#0F2A4A"/>
+  <text x="56" y="38" fill="#0F2A4A" font-family="Georgia, serif" font-size="16">Affiliate</text>
+</svg>

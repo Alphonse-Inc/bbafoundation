@@ -1,0 +1,1 @@
+<section class="section"><div class="container"><h1>Page not found</h1><p>That address is not on this website.</p><p><a class="btn btn-gold" href="<?= e(url('/')) ?>">Back to the home page</a></p></div></section>
