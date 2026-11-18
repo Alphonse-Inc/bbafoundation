@@ -1,0 +1,51 @@
+BBAFoundation
+
+This package is the website. Keep the folder layout. The index.php file in this folder is the front controller, so the folder itself is the document root. Do not upload only the public folder.
+
+1. Create the MySQL database and user
+
+cPanel: open MySQL Databases. Create a database and a database user, then add that user to the database with all privileges. The host is usually localhost.
+
+Laragon: create a database and a user in MySQL. The host is usually 127.0.0.1.
+
+Write down the host, database name, user, and password you chose. This package does not contain a database password. Enter those four values on the installer. Leave the demo switch off.
+
+2. Upload and extract
+
+Laragon: extract this zip so index.php sits directly in C:\laragon\www\bbafoundation (not in an extra nested folder). Laragon’s document root for that site is the project folder, not public\. Open http://bbafoundation.test or http://localhost/bbafoundation. If /install is a 404, turn on Apache rewrite_module from the Laragon Apache menu so pretty URLs reach index.php.
+
+cPanel: in File Manager, upload this zip and extract it into public_html for the domain root, or into a subdirectory such as public_html/bbafoundation. index.php must end up directly inside the folder you chose.
+
+On the installer, set BASE_URL to the address you will actually use: http://bbafoundation.test, http://localhost/bbafoundation, https://your-domain, or https://your-domain/bbafoundation.
+
+3. Open /install
+
+Examples: http://bbafoundation.test/install, http://localhost/bbafoundation/install, or https://your-domain/install.
+
+The installer writes config/config.php and then locks itself. This package does not include config/config.php or storage/install.lock. Create the first Super Admin on that screen.
+
+4. Cron
+
+After installation, copy the cron key shown on the success screen. In cPanel → Cron Jobs, use the PHP path the host gives you. If you extracted into public_html, the commands are:
+
+*/5 * * * * php /home/USER/public_html/cron/mail.php
+0 * * * * php /home/USER/public_html/cron/reminders.php
+15 * * * * php /home/USER/public_html/cron/close.php
+30 2 * * * php /home/USER/public_html/cron/backup.php
+0 3 * * * php /home/USER/public_html/cron/sitemap.php
+0 4 * * 1 php /home/USER/public_html/cron/report.php
+0 5 * * * php /home/USER/public_html/cron/retention.php
+
+Replace USER with the cPanel account name. If you extracted into a subdirectory, add that folder to each path. Laragon has no cPanel cron; skip this until you schedule the same scripts with the PHP executable on that PC.
+
+If the host only allows a web cron, call these URLs with the cron key from the installer (not a password from this file):
+
+https://your-domain/cron/mail?key=THE_KEY
+https://your-domain/cron/reminders?key=THE_KEY
+https://your-domain/cron/close?key=THE_KEY
+https://your-domain/cron/backup?key=THE_KEY
+https://your-domain/cron/sitemap?key=THE_KEY
+https://your-domain/cron/report?key=THE_KEY
+https://your-domain/cron/retention?key=THE_KEY
+
+The full cutover, including SMTP, legacy import, and when to remove the old site, is in docs/DEPLOYMENT.md in this package. Open that file from the extracted folder or File Manager. The web server does not serve the docs folder.
